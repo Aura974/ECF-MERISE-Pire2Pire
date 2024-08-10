@@ -4,19 +4,19 @@
 
 **Formation** : Un ensemble de Modules avec un objectif pédagogique défini. L'ordre des Modules est défini par un système de Semantic Versioning.
 
-**Module** : Un ensemble d'Unités de Module avec un objectif pédagogique défini. Un Module concerne un sujet précis.
+**Module** : Un ensemble de Leçons avec un objectif pédagogique défini. Un Module concerne un sujet précis.
 
-**Unité de Module** : Une unité faisant partie intégrante d'un Module. Une UM découpe le sujet précis du Module en leçons (unités plus petites).
+**Leçon** : Une plus petite unité qui compose un Module (semblable à un chapitre).
 
 **Tag** : Une catégorie ou un sujet abordé dans la Formation ou le Module. Permet de filtrer plus facilement.
 
-**Auteur** : Formateur qui a écrit une UM.
+**Auteur** : Formateur qui a écrit une Leçon.
 
 **Utilisateur** : Groupe général dont découlent tous les autres acteurs.
 
 - **Apprenant** : Utilisateur qui veut suivre une Formation.
 
-- **Formateur** : Utilisateur qui peut suivre ou créer des Formations, Modules et UM.
+- **Formateur** : Utilisateur qui peut suivre ou créer des Formations, Modules et Leçons.
 
 - **Formateur référent** : Rôle attribué à certains Formateurs, leur permettant de publier et modifier des Formations attribuées.
 
@@ -58,30 +58,30 @@
   - La description d'un Module doit mentionner une durée estimée.
   - La description d'un Module doit mentionner un ou plusieurs objectifs d'apprentissage.
 - Un Module doit avoir une date de création ou de mise à jour.
-- Un Module appartient à un ou plusieurs Formateurs.
+- Un Module a pour Auteur(s) un ou plusieurs Formateurs.
 - Un Module peut faire partie d'une ou plusieurs Formations.
 - Un Module peut avoir 3 états : `Brouillon`, `Publié` ou `Archivé`.
+- L'état du Module est changé automatiquement pour refléter celui de la Formation dont il fait partie.
 - Un Module est considéré comme validé lorsque toutes ses leçons ont été terminées par l'Apprenant.
 - Un Module peut avoir un ou plusieurs Tags.
-- Un Module est composé d'une ou plusieurs Unité(s) de Module (UM).
-  - Les UM ont un ordre spécifique défini pour ce Module.
+- Un Module est composé d'une ou plusieurs Leçons.
+  - Les Leçons ont un ordre spécifique défini pour ce Module.
 
-## 3. Unités de Module (UM)
+## 3. Leçons
 
-- Une UM doit avoir un intitulé unique.
-- Une UM doit avoir une langue, choisie parmi une liste prédéfinie.
-- Une UM ne peut appartenir qu'à un Module dans la même langue.
-- Une UM doit avoir une description.
-- Une UM appartient à un Formateurs unique.
-- Une UM doit avoir au moins un contenu textuel (paragraphe).
-- Une UM doit avoir au moins une image.
-- Une UM doit avoir au moins une vidéo.
-- Une UM doit avoir une date de création ou de mise à jour.
-- Une UM peut faire partie d'un ou plusieurs Modules.
-- Une UM peut être suivie par 0 ou plusieurs Apprenants.
-- Une UM peut avoir 3 états : `Brouillon`, `Publiée` ou `Archivée`.
-- Une UM peut être validée directement par un Apprenant.
-- Une UM validée dans un Module doit être à nouveau validée si elle est rencontrée dans un autre Module.
+- Une Leçon doit avoir un intitulé unique.
+- Une Leçon doit avoir une langue, choisie parmi une liste prédéfinie.
+- Une Leçon ne peut appartenir qu'à un Module dans la même langue.
+- Une Leçon doit avoir une description.
+- Une Leçon a pour Auteur un Formateur unique.
+- Une Leçon doit avoir au moins un contenu textuel (paragraphe).
+- Une Leçon doit avoir au moins une image.
+- Une Leçon doit avoir au moins une vidéo.
+- Une Leçon doit avoir une date de création ou de mise à jour.
+- Une Leçon peut faire partie d'un ou plusieurs Modules.
+- Une Leçon peut être suivie par 0 ou plusieurs Apprenants.
+- Une Leçon peut être validée directement par un Apprenant.
+- Une Leçon validée dans un Module doit être à nouveau validée si elle est rencontrée dans un autre Module.
 
 ## 4. Tags
 
@@ -90,7 +90,7 @@
 - Les Tags peuvent être ajoutés à partir d'une liste prédéfinie.
 - Un Tag peut être créé par un Administrateur ou un Formateur référent.
 - Un Tag peut être modifié ou supprimé par un Administrateur.
-- Un Tag ne doit pas être supprimé s'il est associé à une Formation, un Module ou une UM ayant l'état `Publié`.
+- Un Tag ne doit pas être supprimé s'il est associé à une Formation, un Module ou une Leçon ayant l'état `Publié`.
 - Un Tag peut être utilisé pour faciliter la recherche et le filtrage des contenus sur la plateforme.
 
 ## 5. Utilisateurs
@@ -106,8 +106,8 @@
 
 - Un Apprenant a un Code Apprenant unique, attribué automatiquement.
 - Un Apprenant peut s'inscrire à une ou plusieurs Formations.
-- Un Apprenant peut valider 0 ou plusieurs UM.
-  - Un Module est complété en validant toutes les UM de celui-ci.
+- Un Apprenant peut valider 0 ou plusieurs Leçons.
+  - Un Module est complété en validant toutes les Leçons de celui-ci.
   - Une Formation est terminée en complétant tous les Modules de celle-ci.
 - Un Apprenant peut consulter son historique de Formation et les certificats de complétion obtenus.
 - Un Apprenant peut demander la suppression de son compte, ce qui entraîne la suppression de ses données personnelles conformément au RGPD.
@@ -115,27 +115,27 @@
 ## 7. Formateurs
 
 - Un Formateur a un Code Formateur unique, attribué automatiquement.
-- Un Formateur peut créer des Unités de Module (UM).
-  - Un Formateur peut modifier les UM qu'il a créées.
-- Un Formateur peut créer des Modules en assemblant plusieurs UM, qu’il a créées ou qui ont été créées par d'autres Formateurs.
-  - Un Formateur peut modifier les Modules qu'il a créés en ajoutant, supprimant ou réorganisant des UM.
+- Un Formateur peut créer des Leçons.
+  - Un Formateur peut modifier les Leçons qu'il a créées.
+- Un Formateur peut créer des Modules en assemblant plusieurs Leçons, qu’il a créées ou qui ont été créées par d'autres Formateurs.
+  - Un Formateur peut modifier les Modules qu'il a créés en ajoutant, supprimant (archivage) ou réorganisant des Leçons.
 - Un Formateur peut créer des Formations en assemblant plusieurs Modules.
-  - Un Formateur peut modifier les Formations qu'il a créées en ajoutant, supprimant ou réorganisant des Modules.
-- Un Formateur peut associer des Tags à une Formation, un Module, ou une UM, à partir d'une liste prédéfinie.
-- Un Formateur peut demander la suppression de son compte, ce qui entraîne la suppression de ses données personnelles et l'archivage des Formations, Modules, et UM qu'il a créés, conformément au RGPD.
-- Un Formateur peut consulter l’historique des Formations, Modules, et UM qu'il a créés, ainsi que les statistiques d’utilisation par les Apprenants.
+  - Un Formateur peut modifier les Formations qu'il a créées en ajoutant, supprimant (archivage) ou réorganisant des Modules.
+- Un Formateur peut associer des Tags à une Formation, un Module, ou une Leçon, à partir d'une liste prédéfinie.
+- Un Formateur peut demander la suppression de son compte, ce qui entraîne la suppression de ses données personnelles et l'archivage des Formations, Modules, et Leçons qu'il a créés, conformément au RGPD.
+- Un Formateur peut consulter l’historique des Formations, Modules, et Leçons qu'il a créés, ainsi que les statistiques d’utilisation par les Apprenants.
 
 ### Rôle de Formateur Référent
 
-- Un Formateur peut être promu au rôle de Formateur référent par un Administrateur.
+- Un Formateur peut être promu au rôle de Formateur Référent par un Administrateur.
 - Un Formateur Référent peut se voir attribuer des Formations à l'état `Brouillon` ou `Publiée`
-- Un Formateur référent peut :
+- Un Formateur Référent peut :
   - publier,
   - archiver,
   - modifier
 une Formation qui lui est attribuée.
-- Un Formateur référent peut modifier des Modules dont il n'est pas l'auteur, à condition qu'ils fassent partie d'une Formation qui lui est attribuée.
-- Un Formateur référent peut créer de nouveaux Tags.
+- Un Formateur Référent peut modifier des Modules dont il n'est pas l'auteur, à condition qu'ils fassent partie d'une Formation qui lui est attribuée.
+- Un Formateur Référent peut créer de nouveaux Tags.
 
 ## 8. Super Administrateurs
 
@@ -149,7 +149,7 @@ des comptes Administrateurs.
 ## 9. Administrateurs
 
 - Un Administrateur peut créer et modifier des comptes Utilisateurs.
-- Un Administrateur peut promouvoir un Formateur au rôle de Formateur référent.
+- Un Administrateur peut promouvoir un Formateur au rôle de Formateur Référent.
 - Un Administrateur peut désactiver temporairement un compte Utilisateur pour des raisons de sécurité ou de non-respect des conditions d’utilisation.
 - Un Administrateur peut consulter et gérer les Transactions.
   - Un Administrateur est notifié lorsqu'un paiement est reçu, afin de confirmer manuellement l'inscription de l'Apprenant concerné.
@@ -166,9 +166,9 @@ des comptes Administrateurs.
   - Si la Formation est payante, le statut de l'Inscription passe automatiquement à `En attente de paiement`.
   - Lorsqu'un paiement est effectué, le statut de l'Inscription passe automatiquement à `Paiement effectué`.
   - Lorsqu'un paiement est reçu, l'Administrateur peut changer manuellement le statut l'Inscription à `Inscription confirmée`.
-  - Une Inscription `confirmée` débloque le contenu d'une Formation pour l'Apprenant.
-  - Une Inscription peut être `annulée` avant le paiement par l'Apprenant ou l'Administrateur.
-  - Une Inscription ne peut pas être `annulée` une fois que la Formation a commencé.
+  - Une `Inscription confirmée` débloque le contenu d'une Formation pour l'Apprenant.
+  - Une Inscription peut être `Annulée` avant le paiement par l'Apprenant ou l'Administrateur.
+  - Une Inscription ne peut pas être `Annulée` une fois que la Formation a commencé.
 
 ## 11. Transactions
 
@@ -180,16 +180,21 @@ des comptes Administrateurs.
   - Une Transaction est automatiquement créée lors du processus de paiement dans une inscription spécifique. Elle a alors le statut `En attente` par défaut.
   - Lorsque le paiement est effectué, le statut de la Transaction passe à `En cours`.
   - Si le paiement échoue (fonds insuffisant, interruption du processus de paiement), la Transaction passe au statut `Échouée` et ne peut plus être modifiée. Une nouvelle Transaction doit être créée pour effectuer un autre paiement.
-  - Lorsque le paiement est reçu, la TRansaction passe au statut `Complétée` et une notification est envoyée automatiquement à l'Administrateur.
+  - Lorsque le paiement est reçu, la Transaction passe au statut `Complétée` et une notification est envoyée automatiquement à l'Administrateur.
 - Une Inscription peut être liée à une ou plusieurs Transactions si des paiements échelonnés sont autorisés.
 
-### Processus d'inscription et de paiement
+### Détail du processus d'inscription et de paiement
 
-**1.** Lorsqu'un Apprenant s'inscrit à une Formation, une Inscription est créée :  
-  **1a.** Si la Formation est payante, l'Inscription a le statut `En attente de paiement`  
-  **1b.** Si la Formation est gratuite, l'Inscription est automatiquement `confirmée` (pas besoin de l'intervention de l'Administrateur)
+**1.** Lorsqu'un Apprenant s'inscrit à une Formation, une Inscription est créée :
 
-**2.** Lorsque l'apprenant commence le processus de paiement, une transaction est créée, avec le statut `En attente` :  
-  **2a.** Si le paiement aboutit, la Transaction passe au statut `En cours` -> l'Inscription passe automatiquement au statut `Paiement effectué`  
-  **2b.** Une fois le paiement reçu, la Transaction passe automatiquement au statut `Complétée` -> L'Administrateur est notifié et peut alors confirmer manuellement l'Inscription.  
-  **2c.** Si le paiement échoue (fonds insuffisants, processus interrompu avant la fin), la Transaction passe au statut "Échouée" -> l'Inscription ne change pas de statut -> une Transaction échouée ne peut plus être modifiée. Il faudra ouvrir une autre Transaction pour effectuer un autre paiement.
+- **1a.** Si la Formation est payante, l'Inscription a le statut `En attente de paiement`
+
+- **1b.** Si la Formation est gratuite, l'Inscription est automatiquement `confirmée` (pas besoin de l'intervention de l'Administrateur)
+
+**2.** Lorsque l'apprenant commence le processus de paiement, une transaction est créée, avec le statut `En attente` :
+
+- **2a.** Si le paiement aboutit, la Transaction passe au statut `En cours` -> l'Inscription passe automatiquement au statut `Paiement effectué`
+
+- **2b.** Si le paiement échoue (fonds insuffisants, processus interrompu avant la fin), la Transaction passe au statut "Échouée" -> l'Inscription ne change pas de statut -> une Transaction échouée ne peut plus être modifiée. Il faudra ouvrir une autre Transaction pour effectuer un autre paiement.  
+
+**3.** Une fois le paiement reçu, la Transaction passe automatiquement au statut `Complétée` -> L'Administrateur est notifié et peut alors confirmer manuellement l'Inscription.  
